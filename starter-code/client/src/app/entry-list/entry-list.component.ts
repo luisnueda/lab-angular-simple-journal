@@ -12,8 +12,8 @@ export class EntryListComponent implements OnInit {
 
   entryList$: Observable<any>;
 
-  constructor(private MyServiceService: MyServiceService, public router: Router) {
-    this.entryList$ = MyServiceService.getEntry();
+  constructor(private myServiceService: MyServiceService, public router: Router) {
+    this.entryList$ = myServiceService.getEntry();
    }
 
   ngOnInit() {

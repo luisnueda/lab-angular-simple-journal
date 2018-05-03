@@ -1,0 +1,7 @@
+<h1>Single Entry</h1>
+<a [routerLink]="['']"> Back to list </a>
+<div *ngIf="single">
+    <h3>{{single.title}}</h3>
+    <p>{{single.content}}</p>
+    <p>{{single.date}}</p>
+</div>
