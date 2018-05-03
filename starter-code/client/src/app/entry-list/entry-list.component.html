@@ -1,8 +1,11 @@
 <h1>Entry List</h1>
 
+<app-entry-form-component></app-entry-form-component>
+
 <div *ngFor="let e of entryList$ | async ">
   <h3>{{e.title}}</h3>
   <p>{{e.date}}</p>
   <a [routerLink]="['/home',e._id]">Show more...</a>
 </div>
+
 

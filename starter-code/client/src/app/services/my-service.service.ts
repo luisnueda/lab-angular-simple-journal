@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Entry } from '../entry.interface';
-import { Http, Response } from '@angular/http';
+import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/bufferCount';
+import 'rxjs';
 
 @Injectable()
 export class MyServiceService {
@@ -20,6 +19,11 @@ export class MyServiceService {
   getEntryId(id) {
     return this.http
       .get(`${this.BASE_URL}/api/journal-entries/${id}`)
+      .map(res => res.json());
+  }
+  addEntry(title, content) {
+    return this.http
+      .post(`${this.BASE_URL}/api/journal-entries`, {title, content})
       .map(res => res.json());
   }
 }
