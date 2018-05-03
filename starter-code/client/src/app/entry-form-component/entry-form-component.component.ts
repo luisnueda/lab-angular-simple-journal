@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { MyServiceService } from '../services/my-service.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import {Observable} from 'rxjs/Observable';
+import { EntryListComponent } from '../entry-list/entry-list.component';
 
 @Component({
   selector: 'app-entry-form-component',
@@ -9,34 +10,21 @@ import {Observable} from 'rxjs/Observable';
   styleUrls: ['./entry-form-component.component.css']
 })
 export class EntryFormComponentComponent implements OnInit {
-
+ @Output() refresh = new EventEmitter<string>();
   entryForm: any;
 
-  constructor(private myServiceService: MyServiceService, public router: Router, route: ActivatedRoute,) {
-    route.params.subscribe(params => {
-      myServiceService.getEntryId(params.id).subscribe(entry => {
-        this.entryForm = entry;
-
-      });
-    });
-  }
+  constructor(private myServiceService: MyServiceService, public router: Router) {}
 
   ngOnInit() {
   }
 
+
   addEntryC(title, content) {
-    console.log('Hola')
-    this.myServiceService.addEntry(title, content);
-    console.log(this.entryForm.title)
-  }
-
-
-  saveComment() {
-    console.log(this.entryForm);
-    this.myServiceService.addEntry(this.title,this.comment).subscribe(() =>{
-
+    console.log(title, content);
+    this.myServiceService.addEntry(title, content).subscribe(() => {
+      this.refresh.emit();
     });
-    this.entryForm = "";
   }
 
 }
+

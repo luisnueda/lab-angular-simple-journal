@@ -22,6 +22,7 @@ export class MyServiceService {
       .map(res => res.json());
   }
   addEntry(title, content) {
+    console.log(title,content)
     return this.http
       .post(`${this.BASE_URL}/api/journal-entries`, {title, content})
       .map(res => res.json());

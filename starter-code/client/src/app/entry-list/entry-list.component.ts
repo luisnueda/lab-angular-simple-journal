@@ -19,4 +19,7 @@ export class EntryListComponent implements OnInit {
   ngOnInit() {
   }
 
+  reloadComponent() {
+    this.entryList$ = this.myServiceService.getEntry();
+  }
 }
