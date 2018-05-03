@@ -13,8 +13,7 @@ export class EntryListComponent implements OnInit {
   entryList$: Observable<any>;
 
   constructor(private MyServiceService: MyServiceService, public router: Router) {
-    this.entryList$ = this.MyServiceService.getEntry();
-    console.log(this.entryList$);
+    this.entryList$ = MyServiceService.getEntry();
    }
 
   ngOnInit() {

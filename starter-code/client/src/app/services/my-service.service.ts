@@ -8,7 +8,7 @@ import 'rxjs/add/operator/bufferCount';
 @Injectable()
 export class MyServiceService {
 
-  entry: Array<Entry> = [];
+  entry: Array<Entry>;
 
 constructor(private http: Http) { }
 

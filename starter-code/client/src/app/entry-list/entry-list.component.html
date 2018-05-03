@@ -1,3 +1,6 @@
 <h1>Entry List</h1>
 
-{{entryList}}
+<div *ngFor="let e of entryList$ | async ">
+  <h3>{{e.title}}</h3>
+  <p>{{e.date}}</p>
+</div>
